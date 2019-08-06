@@ -1,0 +1,436 @@
+/*=================================================================================
+|                                 General Styling                                 |
+=================================================================================*/
+/*****
+** VARIABLES
+*****/
+$blue: #000066;
+$lightgray: #f1f1f1;
+$gray: #363636;
+
+/*****
+** COLORS
+*****/
+
+.blue {
+    color: $blue;
+}
+
+.lightgray {
+    color: $lightgray;
+}
+
+.gray {
+    color: $gray;
+}
+
+
+.bg-blue {
+    background-color: $blue;
+}
+
+.bg-lightgray {
+    background-color: $lightgray;
+}
+
+.bg-gray {
+    background-color: $gray;
+}
+
+
+/*****
+** FONTS
+*****/
+
+
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Cabin', sans-serif;
+}
+
+h1 {
+    font-family: 'Montserrat';
+    font-size: 35px;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: 'Cabin';
+    font-size: 18px;
+}
+
+h4 {
+    font-family: 'Cabin';
+    font-size: 15px;
+    font-weight: bold;
+}
+
+h5,p, a {
+    font-size: 16px;
+    line-height: 1.5em;
+    font-family: 'Cabin';
+}
+
+html {
+    color: $gray;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+/*
+* Styles
+*/
+
+.style-cntnr {
+    margin-top: 30px;
+}
+
+.circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 200px;
+    margin: auto;
+}
+
+.color-cntnr {
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+}
+
+.style-color {
+    background-color: white;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+.font-cntnr {
+    background-color: white;
+    padding: 10px;
+}
+
+.font-hldr {
+    margin-bottom: 20px;
+}
+
+.button-cntnr {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+
+    a {
+        margin-right: 30px;
+    }
+}
+
+.button {
+    background-color: $blue;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    color: white;
+    padding: 7px 30px;
+    border: 2px solid transparent;
+    font-size: 13px;
+    font-family: Montserrat;
+    letter-spacing: 0px;
+    transition: all 0.34s;
+
+    &:hover {
+        border: 2px solid $blue;
+        background-color: white;
+        color: $blue;
+    }
+}
+
+button {
+    background-color: $blue;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    color: white;
+    padding: 7px 30px;
+    font-size: 13px;
+    border: 2px solid $blue;
+    font-family: Montserrat;
+    border: 2px solid transparent;
+    letter-spacing: 0px;
+    cursor: pointer;
+    transition: all 0.34s;
+
+    &:hover {
+        border: 2px solid $blue;
+        background-color: white;
+        color: $blue;
+    }
+}
+
+
+
+/*
+* Body
+*/
+body {
+	overflow-x: hidden;
+}
+
+/*
+* Main
+*/
+.main {
+	position: relative;
+	min-height: 100vh;
+    z-index: 1;
+}
+
+/*
+* Header
+* hdr : header
+*/
+.hdr-bg {
+}
+
+.hdr-frame {
+    
+}
+
+
+
+/*
+* Footer
+* ftr : footer
+*/
+.ftr-frame {
+    .ftr-cntnr {
+
+     }
+
+}
+
+/*
+* Frame Container
+* frm-cntnr : frame contianer
+*/
+.frm-cntnr {
+	position: relative;
+	margin: auto;
+	height: 100%;
+    max-width: 1400px;
+	box-sizing: border-box;
+
+	&.align-r {
+		margin: 0;
+		margin-left: auto;
+	}
+
+	&.align-l {
+		margin: 0;
+		margin-right: auto;
+	}
+
+}
+
+/** 
+ * Frame Background
+ * frm-bckgrnd : frame background
+ */
+$frame-bg--pos__t: top center;
+$frame-bg--pos__c: center center;
+$frame-bg--pos__b: bottom center;
+
+.frm-bckgrnds {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: $frame-bg--pos__c;
+
+    &.bring-front {
+    	z-index: -1;
+    }
+    &.bring-back {
+    	z-index: -2;
+    }
+    &.size-cover {
+    	background-size: cover;
+    }
+    &.size-contain{
+    	background-size: contain;
+    }
+    &.align-r {
+    	right: 0;
+    }
+    &.align-l {
+    	left: 0;
+    }
+    &.align-c {
+    	left: 50%;
+    	transform: translateX(-50%);
+    }
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ccc; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $blue; 
+}
+
+
+
+
+/*****
+** SLICK DOTS
+*****/
+
+.slick-dots li.slick-active button:before {
+    font-size: 8px;
+    color: transparent;
+    background: $blue;
+    opacity: 1;
+
+}
+
+.slick-dots li button:before {
+    width: 8px;
+    height: 8px;
+    color: transparent;
+    border: 1px solid $blue;
+    border-radius: 50%;
+    opacity: 1;
+    transition: all 0.2s;
+
+}
+
+.slick-dots li {
+    margin: 0;
+}
+
+.slick-dots li button:hover:before, .slick-dots li button:focus:before {
+    background: $blue;
+}
+
+
+/*Privacy Statement*/
+
+.terms-remodal {
+    border-radius: 10px;
+    .remodal-close {
+        left: auto;
+        right: 0%;
+        top: 0%;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+
+    .modal-bg {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .modal-body {
+        position: relative;
+        text-align: center;
+        border: 2px solid $blue;
+        padding: 30px;
+        padding-bottom: 40px;
+        border-radius: 10px;
+        
+
+    }
+
+    .modal-header {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 30px;
+        * {
+            font-family: Cabin;
+            color: $blue;
+        }
+    }
+
+    .modal-desc {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 20px;
+        * {
+            font-family: Cabin;
+        }
+    }
+
+    .modal-desc-b {
+        position: relative;
+        z-index: 2;
+        width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
+
+        * {
+            color: red;
+            font-size: 0.9em;
+        }
+    }
+
+    .privacy-link {
+        position: relative;
+        z-index: 2;
+        color: $blue;
+        margin-bottom: 30px;
+
+        * {
+            font-family: Cabin;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+
+    .agree-btn {
+        position: relative;
+        z-index: 2;
+
+        a {
+            cursor: pointer;
+        }
+    }
+
+
+
+
+
+}
+
