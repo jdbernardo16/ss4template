@@ -11,6 +11,9 @@ var app = {
 			case 'HomePage':
 				setup.homepage();
 				break;
+			case 'ContactPage':
+				setup.contactpage();
+				break;
 		}
 
 		setup.menu();
@@ -24,6 +27,10 @@ var app = {
 
 		homepage: function() {
 			
+		},
+
+		contactpage: function() {
+			app.form.init($('#contactForm'), $('#contactBtn'), 'form/contact/send', false);
 		},
 
 			

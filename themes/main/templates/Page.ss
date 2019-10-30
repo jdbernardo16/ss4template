@@ -1,13 +1,24 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-        <% base_tag %>
+       <% base_tag %>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><% if $MetaTitle %>$MetaTitle<% else %>$Title<% end_if %> | $SiteConfig.Title</title>
-        <meta name="description" content="$MetaDescription">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <% loop HeaderFooter %>
+        <meta name="keywords" content="$SeoKeywords"> 
         <link rel="shortcut icon" href="$Favicon.Url" type="image/x-icon" />
+        <% if Logo %>
+             <meta property="og:image" content="$Logo.Url">    
+        <% end_if %>
+        <% end_loop %>
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <meta property="og:title" content="$Title">
+        <meta property="og:description" content="$MetaDescription">
+        <meta property="og:url" content="{$AbsoluteBaseURL}">
+        <meta property="og:site_name" content="$SiteConfig.Title">
+        <meta property="og:type" content="website">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -26,6 +37,9 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/remodal/1.0.6/remodal.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/remodal/1.0.6/remodal-default-theme.min.css">
 
+        <%-- Animate Css --%>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
         <!-- Light Gallery -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.4/css/lightgallery.min.css">
         
@@ -33,7 +47,8 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
         <!-- Fonts -->
-       <link href="https://fonts.googleapis.com/css?family=Cabin:400,600,700|Montserrat:400,700|Roboto:400,700&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="$ThemeDir/fonts/Ubuntu.css" rel="stylesheet">
 
         <!-- Compiled CSS -->
         <link href="$ThemeDir/assets/app.min.css" rel="stylesheet">
@@ -89,6 +104,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
+         <!-- File Upload -->
+        <script src="$ThemeDir/js/vendor/jquery.ui.widget.js"></script>
+        <script src="$ThemeDir/js/vendor/jquery.iframe-transport.js"></script>
+        <script src="$ThemeDir/js/vendor/jquery.fileupload.js"></script>
+        <!--  -->
+
         <!-- Vue -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
 
@@ -106,6 +127,8 @@
         
         <!-- Slick -->
         <script src="//cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
+        <script src="//alexandrebuffet.fr/codepen/slider/slick-animation.min.js"></script>
+
         
         <!-- Remodal -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/remodal/1.0.6/remodal.min.js"></script>
@@ -140,23 +163,23 @@
         <script type="text/javascript" src="$ThemeDir/js/storelocator.js"></script>
 
         <!-- Maps -->
-         <% loop ContactDetails %>
+         <% loop ContactPage %>
              <script type="text/javascript">
                     var mapLat = $Lat,
                         mapLng = $Lng;
 
                 var mapOptions = {
-                    zoom: 19,
+                    zoom: 15,
                     center: new google.maps.LatLng(mapLat, mapLng),
                     // styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
                 };
 
-                var mapElement = document.getElementById('map-$ID');
+                var mapElement = document.getElementById('map');
                 var map = new google.maps.Map(mapElement, mapOptions);
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(mapLat, mapLng),
                     map: map,
-                    title: 'TECHNOLUX',
+                    title: 'Trinity',
                     icon: '$MapPin.Url',
                     animation: google.maps.Animation.DROP,
                 });

@@ -5,24 +5,35 @@ namespace {
 	use PageController;
 	use SilverStripe\Forms\TextField;
 	use SilverStripe\Forms\TextareaField;
-	use SilverStripe\Forms\HTMLEditorField;
+	use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+	use SilverStripe\Forms\HTMLEditor;
+	use SilverStripe\Forms\FormField;
 	use SilverStripe\AssetAdmin\Forms\UploadField;
 	use SilverStripe\Assets\Image;
+	use SilverStripe\Assets\File;
 	use SilverStripe\Forms\TabSet;
 	use SilverStripe\Forms\Tab;
+	use SilverStripe\ORM\DataObject;
+	use SilverStripe\Forms\FieldList;
+	use SilverStripe\Forms\GridField\GridField;
+	use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+	use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 	class HomePage extends Page {
 
 		private static $db = [
-			'F2Header' => 'Text',
-			'F2Desc' => 'Text',
-			'F2BtnLink' => 'Text',
-			'F2BtnLbl' => 'Text',
+
 		];
 
 		private static $has_one = [
-			'F2BG' => Image::class,
+			
 		];
+
+		private static $owns = [
+		
+		];
+
+
 
 		private static $allowed_children = "none";
 
@@ -39,29 +50,12 @@ namespace {
 			#Remove by tab
 			$fields->removeFieldFromTab('Root.Main', 'Content');
 			
-						/*
-			* Frame 2
-			*/
-			$fields->addFieldToTab('Root.Frame 2', new TabSet('Frame2Sets',
-				new Tab('Content',
-					TextField::create('F2Header', 'Header'),
-					TextareaField::create('F2Desc', 'Description')	
-				),
-				new Tab('Background & Button',
-					$uploadf2 = UploadField::create('F2BG','Background'),
-					TextField::create('F2BtnLink', 'Button Link'),
-					TextField::create('F2BtnLbl', 'Button Text')
-				)
-			));	
-			# SET FIELD DESCRIPTION 
-			$uploadf2->setDescription('Max file size: 2MB | Dimension: 1366px x 768px');
-			# Set destination path for the uploaded images.
-			$uploadf2->setFolderName('homepage/frame-2');
 			return $fields;
 		}
 	}
 
 	class HomePageController extends PageController {
+
 
 	}
 }
